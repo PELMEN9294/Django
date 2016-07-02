@@ -1,14 +1,17 @@
-from django.shortcuts import render
+#from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Questions
 
 def index(request):
-    return HttpResponse("Hello, world.")
+    latest_question_list = Questions.objects.order_by('-pub_date')[:5]
+    output = '. '.join([q.question_text for q in latest_question_list])
+    return HttpResponse(output)
 
 def votes(request):
-    return HttpResponse("You're voting on question %s." % question_text)
+    return HttpResponse("You're voting on question %s." % question_id)
 
-def detail(request, question_text):
-    return HttpResponse("You're looking at question %s." % question_text)
+def detail(request, question_id):
+    return HttpResponse("You're looking at question %s." % question_id)
 
-def results(request, question_text):
-    return HttpResponse("You're looking at the results of question %s." % question_text)
+def results(request, question_id):
+    return HttpResponse("You're looking at the results of question %s." % question_id)
