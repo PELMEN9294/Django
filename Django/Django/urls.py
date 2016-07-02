@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.conf.urls import include
 
 urlpatterns = [
-    url(r'^', include('root.urls')),
+
     url(r'^votes/', include('votes.urls')),
     url(r'^news/', include('news.urls')),
     url(r'^admin/', admin.site.urls),
