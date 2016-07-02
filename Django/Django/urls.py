@@ -18,8 +18,10 @@ from django.contrib import admin
 from django.conf.urls import include
 
 urlpatterns = [
-
+    url(r'^', include('votes.urls')),
+    url(r'^detail/', include('votes.urls')),
+    url(r'^results/', include('votes.urls')),
     url(r'^votes/', include('votes.urls')),
     url(r'^news/', include('news.urls')),
-    url(r'^admin/', admin.site.urls),
+    url(r'^admin/', admin.site.urls)
 ]
